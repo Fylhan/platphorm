@@ -1,0 +1,20 @@
+{
+    "name": "fylhan/platphorm",
+    "description": "Platphorm is a proof of concept of a PHP platform able to install gracefully PHP apps (like SHaarli, Blogotext, Leed and KrissFeed) using Composer.",
+    "authors": [
+        {
+            "name": "Fylhan",
+            "email": "bnmaster@la-bnbox.fr"
+        }
+    ],
+    "repositories": [
+	    {
+	        "type":"vcs",
+	        "url":"../app2"
+	    }
+	],
+    "require": {
+		"fylhan/multiple-regex-tool":"*"
+    },
+    "minimum-stability":"dev"
+}
