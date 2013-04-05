@@ -14,7 +14,8 @@
 	    }
 	],
     "require": {
-		"fylhan/multiple-regex-tool":"*"
+		"fylhan/multiple-regex-tool":"*",
+		"composer/composer":"*"
     },
     "minimum-stability":"dev",
     "autoload": {
