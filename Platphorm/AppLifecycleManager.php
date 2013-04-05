@@ -1,10 +1,10 @@
 <?php
 
-namespace MyVendor;
+namespace Platphorm;
 
 use Composer\Script\Event;
 
-class MyClass {
+class AppLifecycleManager {
 	public static function postInstall(Event $event) {
 		$composer = $event->getComposer();
 		// I am here to fake the installation of this "platphorm"

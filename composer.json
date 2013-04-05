@@ -17,8 +17,11 @@
 		"fylhan/multiple-regex-tool":"*"
     },
     "minimum-stability":"dev",
+    "autoload": {
+        "psr-0": {"Platphorm\\AppLifecycleManager": "./"}
+    },
     "scripts": {
-		"post-install-cmd": "MyVendor\\MyClass::postUpdate",
-		"post-update-cmd": "MyVendor\\MyClass::postInstall"
+		"post-install-cmd": "Platphorm\\AppLifecycleManager::postInstall",
+		"post-update-cmd": "Platphorm\\AppLifecycleManager::postUpdate"
 	}
 }

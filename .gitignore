@@ -2,3 +2,7 @@
 /.project
 /composer.phar
 /vendor
+/THIS_IS_IT_I_AM_INSTALLED
+/THIS_IS_IT_I_AM_UPDATED
+/.settings
+/composer.lock
