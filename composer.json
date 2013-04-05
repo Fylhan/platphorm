@@ -10,11 +10,15 @@
     "repositories": [
 	    {
 	        "type":"vcs",
-	        "url":"../app2"
+	        "url":"https://github.com/Fylhan/multiple-regex-tool.git"
 	    }
 	],
     "require": {
 		"fylhan/multiple-regex-tool":"*"
     },
-    "minimum-stability":"dev"
+    "minimum-stability":"dev",
+    "scripts": {
+		"post-install-cmd": "MyVendor\\MyClass::postUpdate",
+		"post-update-cmd": "MyVendor\\MyClass::postInstall"
+	}
 }
