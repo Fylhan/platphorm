@@ -1,28 +1,32 @@
 {
-    "name": "fylhan/platphorm",
-    "description": "Platphorm is a proof of concept of a PHP platform able to install gracefully PHP apps (like SHaarli, Blogotext, Leed and KrissFeed) using Composer.",
-    "authors": [
-        {
-            "name": "Fylhan",
-            "email": "bnmaster@la-bnbox.fr"
-        }
-    ],
-    "repositories": [
-	    {
-	        "type":"vcs",
-	        "url":"https://github.com/Fylhan/multiple-regex-tool.git"
-	    }
+	"name" : "fylhan/platphorm",
+	"description" : "Platphorm is a proof of concept of a PHP platform able to install gracefully PHP apps (like Shaarli, Poche, Blogotext, Leed or KrissFeed, ...) using Composer.",
+	"authors" : [{
+			"name" : "Fylhan",
+			"email" : "bnmaster@la-bnbox.fr"
+		}
 	],
-    "require": {
-		"fylhan/multiple-regex-tool":"*",
-		"composer/composer":"*"
-    },
-    "minimum-stability":"dev",
-    "autoload": {
-        "psr-0": {"Platphorm\\AppLifecycleManager": "./"}
-    },
-    "scripts": {
-		"post-install-cmd": "Platphorm\\AppLifecycleManager::postInstall",
-		"post-update-cmd": "Platphorm\\AppLifecycleManager::postUpdate"
+	"require" : {
+		"fylhan/multiple-regex-tool" : "*",
+		"composer/composer" : "*"
+	},
+	"autoload" : {
+		"psr-0" : {
+			"Platphorm" : "src/"
+		}
+	},
+	"minimum-stability" : "dev",
+	"repositories" : [{
+			"type" : "vcs",
+			"url" : "https://github.com/Fylhan/multiple-regex-tool.git"
+		}
+	],
+	"scripts" : {
+		"post-update-cmd" : [
+			"Platphorm\\AppLifecycleManager::postUpdate"
+		],
+		"post-install-cmd" : [
+			"Platphorm\\AppLifecycleManager::postInstall"
+		]
 	}
 }
