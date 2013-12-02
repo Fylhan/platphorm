@@ -5,6 +5,7 @@ use Composer\Factory;
 use Composer\IO\BufferIO;
 use Composer\Repository\RepositoryManager;
 use Composer\DependencyResolver\Operation\UpdateOperation;
+use Composer\Package\PackageInterface;
 ?>
 
 <!DOCTYPE html>
@@ -19,11 +20,32 @@ use Composer\DependencyResolver\Operation\UpdateOperation;
 	<?php
 	$bufferIo = new BufferIO();
 	$composer = Factory::create($bufferIo);
-	$repo = $composer->getPackage()->getRepositories();
-	$repoConfig = $repo[0];
 	$package = $composer->getPackage();
-	var_dump($composer->getRepositoryManager()->createRepository("vcs", $repoConfig)->getPackages());
-	var_dump($composer->getInstallationManager()->update($composer->getRepositoryManager()->createRepository("vcs", $repoConfig)->getPackages(), new UpdateOperation($package, $package)));
+	// Display
+	echo '<ul>';
+	foreach ($composer->getRepositoryManager()
+		->getLocalRepository()
+		->getCanonicalPackages() as $package) {
+		// Update
+		if (! empty($_GET['id'])) {
+			if ($package->getName() == $_GET['id']) {
+				echo @$_GET['id'] . ' ' . @$_GET['version'];
+// 				var_dump($package);
+				var_dump($composer->getInstallationManager()->update($composer->getRepositoryManager()
+					->getLocalRepository(), new UpdateOperation($package, $package)));
+				var_dump($composer->getRepositoryManager()->getLocalRepository()->findPackage("enygma/xacmlphp", "dev-master"));
+			}
+		}
+		echo '<li>' . $package->getName() . ': ' . $package->getDescription() . ' <a href="index.php?id=' . $package->getName() . '&version=' . $package->getVersion() . '">Install</a></li>';
+	}
+	echo '</ul>';
+	var_dump($composer->getRepositoryManager()->getLocalRepository());
+	var_dump($composer->getRepositoryManager()
+		->createRepository("vcs", $repoConfig)
+		->getPackages());
+	var_dump($composer->getInstallationManager()->update($composer->getRepositoryManager()
+		->createRepository("vcs", $repoConfig)
+		->getPackages(), new UpdateOperation($package, $package)));
 	?>
 </body>
 </html>
